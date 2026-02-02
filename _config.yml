@@ -23,7 +23,7 @@ repository               : "academicpages/academicpages.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "images/profile.png"
+  avatar           : "images/profile.jpg"
   name             : "Roberto M. Fuentes Albornoz"
   pronouns         : # example: "she/her"  
   bio              : "Researcher in Control Theory and its application"
