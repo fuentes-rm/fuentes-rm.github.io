@@ -28,7 +28,7 @@ author:
   pronouns         : # example: "she/her"  
   bio              : "Researcher in Control Theory and its application"
   location         : "Curicó, Chile"
-  employer         : "Red Brick University"
+  employer         : "University of Talca"
   uri              : # URL
   email            : "rfuentesalbornoz@gmail.com" 
 
@@ -41,7 +41,7 @@ author:
   orcid            : "https://orcid.org/0000-0002-1310-9780"
   semantic         : # URL
   ssrn             : # URL
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : # URL
   researchgate     : "https://www.researchgate.net/profile/Roberto-Fuentes-Albornoz"
   scopus           : "https://www.scopus.com/authid/detail.uri?authorId=55454216700"
   zotero           : # URL
@@ -57,7 +57,7 @@ author:
 
   # Social media
   artstation       : # Username
-  bluesky          : "bsky.app" # Replace this with you Bluesky username
+  bluesky          : # Username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username

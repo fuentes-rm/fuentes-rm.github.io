@@ -1,12 +1,12 @@
 ---
 title: "Constant reference tracking control for uncertain linear sampled-data systems"
 collection: publications
-category: conferences
+category: manuscripts
 permalink: /publication/2026-01-01-constant-reference-tracking
 excerpt: 'This paper presents a constant reference tracking control for uncertain linear sampled-data systems.'
 date: 2026-01-01
 venue: 'Nonlinear Analysis: Hybrid Systems'
-paperurl: '#'
+paperurl: 'https://doi.org/10.1016/j.nahs.2024.101651'
 codeurl: '#'
-citation: '<strong>Fuentes, Roberto M</strong>, Gabriel, Gabriela W, de Oliveira, André M, Palma, Jonathan M. (2026). "Constant reference tracking control for uncertain linear sampled-data systems." <i>Nonlinear Analysis: Hybrid Systems</i>. 59, 101651.'
+citation: '<strong>Fuentes, Roberto M</strong>, Gabriel, Gabriela W, de Oliveira, André M, Palma, Jonathan M. (2026). "Constant reference tracking control for uncertain linear sampled-data systems." <i>Nonlinear Analysis: Hybrid Systems</i>. 59, 101651. DOI: 10.1016/j.nahs.2024.101651.'
 ---

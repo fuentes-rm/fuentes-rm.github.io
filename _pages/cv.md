@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -11,35 +11,27 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* Ph.D in Engineering Systems, University of Talca, 2027 (expected)
+* M.S. in Engineering Science - Energy conversion, University of Talca, 2023
+* Engineer in Mechatronics, University of Talca, 2021 
+* B.S. in Engineering Science, University of Talca, 2021
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Professor
+  * Catholic University of Maule, Chile
+  * 2022-2025
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Professional assistant
+  * University of Talca, Chile
+  * 2021-2025
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Control theory
+* Robust stability analysis
+* Markov jump linear systems
+* Hybrid Linear Systems
 
 Publications
 ======
