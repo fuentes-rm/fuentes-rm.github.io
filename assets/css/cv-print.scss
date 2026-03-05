@@ -1,0 +1,193 @@
+--- ---
+
+/* Basic LaTeX-style CSS for CV Print */
+@page {
+    /* Standard A4 margins */
+    margin: 2cm 2.5cm;
+    size: A4 portrait;
+}
+
+body.layout--cv-print {
+    font-family: 'Latin Modern Roman', 'Times New Roman', serif;
+    font-size: 11pt;
+    line-height: 1.3;
+    color: #000;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+
+/* Hide everything else just in case */
+.masthead,
+.sidebar,
+.page__footer,
+nav,
+.btn {
+    display: none !important;
+}
+
+/* Layout */
+.cv-container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Header */
+.cv-header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.cv-header h1 {
+    font-size: 24pt;
+    font-variant: small-caps;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.cv-contact {
+    font-size: 10pt;
+}
+
+.cv-contact a {
+    color: #000;
+    text-decoration: none;
+}
+
+.cv-contact i {
+    margin-right: 5px;
+}
+
+.cv-contact-sep {
+    margin: 0 10px;
+}
+
+/* Sections */
+.cv-section {
+    margin-bottom: 1.5em;
+}
+
+.cv-section-title {
+    font-size: 12pt;
+    font-variant: small-caps;
+    font-weight: normal;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+    page-break-after: avoid;
+}
+
+.cv-section-hr {
+    border: 0;
+    border-bottom: 1px solid #000;
+    margin: 0 0 10px 0;
+}
+
+/* Profiles */
+.cv-profiles table,
+.cv-education table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cv-profiles td,
+.cv-education td {
+    padding: 3px 0;
+    vertical-align: top;
+}
+
+.cv-profiles td:first-child {
+    font-weight: bold;
+    width: 200px;
+}
+
+.cv-profiles a {
+    color: #000;
+    /* or keep original link color if preferred, but usually black in print */
+    text-decoration: none;
+}
+
+/* Education */
+.cv-education .edu-school {
+    font-weight: bold;
+}
+
+.cv-education .edu-degree {
+    font-style: italic;
+}
+
+.cv-education .edu-dates {
+    text-align: right;
+    font-style: italic;
+}
+
+/* Research Areas */
+.cv-areas td:first-child {
+    font-weight: bold;
+    width: 200px;
+}
+
+.cv-areas ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Publications */
+.cv-publications-list {
+    list-style-type: disc;
+    /* Actually the example uses small circles/bullets for authors */
+    padding-left: 0;
+    margin: 0;
+}
+
+.cv-pub-item {
+    margin-bottom: 15px;
+    list-style: none;
+    /* remove bullet on item container */
+}
+
+/* The sub-heading for Journal / Conference using a bullet */
+.cv-pub-type {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.cv-pub-type::before {
+    content: "• ";
+}
+
+/* We need to format the author list. We'll just display it as text */
+.cv-authors {
+    display: inline;
+}
+
+/* Bold the user's name (Fuentes, R.M.) if possible via Liquid, or just do our best */
+.cv-pub-title {
+    display: inline;
+    font-style: italic;
+}
+
+.cv-pub-venue {
+    display: inline;
+    font-style: italic;
+}
+
+.cv-pub-year {
+    font-weight: bold;
+}
+
+.cv-pub-doi {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+@media print {
+
+    /* Ensure background colors/images are printed if any, though we use standard black/white */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
