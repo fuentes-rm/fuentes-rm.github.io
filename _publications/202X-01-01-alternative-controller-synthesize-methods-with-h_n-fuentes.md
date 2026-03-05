@@ -1,7 +1,7 @@
 ---
 title: "Alternative controller synthesize methods with H_ınfty performance for an uncertain system based on metaheuristic optimization"
 collection: publications
-category: journals
+category: conference
 permalink: /publication/202X-alternative-controller-synthesize-methods-with-h_n-fuentes
 excerpt: ''
 date: 202X-01-01
