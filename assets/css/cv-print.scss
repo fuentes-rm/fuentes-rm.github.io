@@ -9,8 +9,8 @@
 
 body.layout--cv-print {
     font-family: 'Latin Modern Roman', 'Times New Roman', serif;
-    font-size: 11pt;
-    line-height: 1.3;
+    font-size: 10pt;
+    line-height: 1.2;
     color: #000;
     background: #fff;
     margin: 0;
@@ -135,16 +135,16 @@ nav,
 
 /* Publications */
 .cv-publications-list {
-    list-style-type: disc;
-    /* Actually the example uses small circles/bullets for authors */
-    padding-left: 0;
+    padding-left: 2em;
     margin: 0;
+}
+
+.cv-publications-list li::marker {
+    font-weight: bold;
 }
 
 .cv-pub-item {
     margin-bottom: 15px;
-    list-style: none;
-    /* remove bullet on item container */
 }
 
 /* The sub-heading for Journal / Conference using a bullet */
@@ -181,6 +181,27 @@ nav,
 .cv-pub-doi {
     color: #0056b3;
     text-decoration: none;
+}
+
+/* Personal References */
+.cv-references {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cv-references td {
+    padding: 8px 0;
+    vertical-align: top;
+}
+
+.cv-references .ref-name {
+    width: 200px;
+    padding-right: 20px;
+    white-space: nowrap;
+}
+
+.cv-references .ref-info {
+    text-align: justify;
 }
 
 @media print {

@@ -50,3 +50,7 @@ Publications
 Collaborators
 ======
 {% include collaborators.md %}
+
+Personal References
+======
+{% include references.md %}
