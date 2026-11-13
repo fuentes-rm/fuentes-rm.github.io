@@ -80,6 +80,104 @@
   "references": [],
   "publications": [
     {
+      "name": "A static \"quasi electric shaft\" for n similar rotor winding induction motors",
+      "publisher": "IAS 2000 - CONFERENCE RECORD OF THE 2000 IEEE INDUSTRY APPLICATIONS CONFERENCE, VOLS 1-5",
+      "releaseDate": "2000-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Harmonic losses measurement at rated current and rated voltage in 12 pulses high current controlled transformer-rectifiers.",
+      "publisher": "NINTH INTERNATIONAL CONFERENCE ON HARMONICS AND QUALITY OF POWER PROCEEDINGS, VOLS I - III",
+      "releaseDate": "2000-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Relevant aspects for harmonics evaluation of industrial plants: A scope from real cases.",
+      "publisher": "NINTH INTERNATIONAL CONFERENCE ON HARMONICS AND QUALITY OF POWER PROCEEDINGS, VOLS I - III",
+      "releaseDate": "2000-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "About current distribution in paralleled thyristors of very high current controlled rectifiers: Analysis of a real case",
+      "publisher": "CONFERENCE RECORD OF THE 2002 IEEE INDUSTRY APPLICATIONS CONFERENCE, VOLS 1-4",
+      "releaseDate": "2002-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Harmonics mitigation in high current multipulse controlled transformer-rectifiers",
+      "publisher": "10TH INTERNATIONAL CONFERENCE ON HARMONICS AND QUALITY OF POWER, VOLS I AND II, PROCEEDINGS",
+      "releaseDate": "2002-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Current distribution in paralleled thyristors. A comparative analysis of 5 real cases in high current transformer - Rectifiers",
+      "publisher": "CONFERENCE RECORD OF THE 2004 IEEE INDUSTRY APPLICATIONS CONFERENCE, VOLS 1-4",
+      "releaseDate": "2004-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Strategic online banking adoption",
+      "publisher": "Journal of Banking &amp; Finance",
+      "releaseDate": "2010-07-01",
+      "website": "https://doi.org/10.1016/j.jbankfin.2010.03.011",
+      "summary": ""
+    },
+    {
+      "name": "Latitudinal Analysis of Rainfall Intensity and Mean Annual Precipitation in Chile",
+      "publisher": "Chilean journal of agricultural research",
+      "releaseDate": "2012-06-01",
+      "website": "https://doi.org/10.4067/s0718-58392012000200014",
+      "summary": ""
+    },
+    {
+      "name": "Influence of climate change on peak flow behavior in central Chile",
+      "publisher": "TECNOLOGIA Y CIENCIAS DEL AGUA",
+      "releaseDate": "2013-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "Water governance in Chile: Availability, management and climate change",
+      "publisher": "Journal of Hydrology",
+      "releaseDate": "2014-11-01",
+      "website": "https://doi.org/10.1016/j.jhydrol.2014.04.016",
+      "summary": ""
+    },
+    {
+      "name": "FPGA-based digital signal processing for the next generation radio astronomy instruments: ultra-pure sideband separation and polarization detection",
+      "publisher": "Millimeter, Submillimeter, and Far-Infrared Detectors and Instrumentation for Astronomy VIII",
+      "releaseDate": "2016-07-01",
+      "website": "https://doi.org/10.1117/12.2233090",
+      "summary": ""
+    },
+    {
+      "name": "A FPGA-based Fast Converging Digital Adaptive Filter for Real-time RFI Mitigation on Ground Based Radio Telescopes",
+      "publisher": "Publications of the Astronomical Society of the Pacific",
+      "releaseDate": "2017-12-01",
+      "website": "https://doi.org/10.1088/1538-3873/aa972f",
+      "summary": ""
+    },
+    {
+      "name": "Digital compensation of the sideband-rejection ratio in a fully analog 2SB sub-millimeter receiver",
+      "publisher": "Astronomy &amp; Astrophysics",
+      "releaseDate": "2018-11-01",
+      "website": "https://doi.org/10.1051/0004-6361/201732316",
+      "summary": ""
+    },
+    {
+      "name": "Lanthanide coordination polymers based on flexible ligands derived from iminodiacetic acid",
+      "publisher": "Polyhedron",
+      "releaseDate": "2019-09-01",
+      "website": "https://doi.org/10.1016/j.poly.2019.06.040",
+      "summary": ""
+    },
+    {
       "name": "Analysis of pole location control, LQR control and LMI control applied to a magnetic levitation with uncertain in parameter",
       "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
       "releaseDate": "2021-12-01",
@@ -183,6 +281,13 @@
       "releaseDate": "2026-03-01",
       "website": "https://doi.org/10.1016/j.conengprac.2026.106881",
       "summary": "This paper establishes novel synthesis conditions in terms of linear matrix inequalities (LMIs) for the design of a full-order dynamic output-feedback (DOF) controller for continuous-time Linear Parameter-Varying (LPV) s..."
+    },
+    {
+      "name": "Pure digital dynamic output feedback for uncertain aperiodic sampled-data systems",
+      "publisher": "Nonlinear Analysis: Hybrid Systems",
+      "releaseDate": "2026-11-01",
+      "website": "https://doi.org/10.1016/j.nahs.2026.101799",
+      "summary": ""
     }
   ],
   "presentations": [],
