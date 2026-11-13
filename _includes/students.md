@@ -1,4 +1,4 @@
 <!-- Agrega tus alumnos aquí en el siguiente formato: -->
-* Undergraduate:
-    * **Emilia Leyton Figueroa** — Ingeniería Civil Mecatrónica, Universidad de Talca. Thesis: *"Análisis del Desempeño de un Controlador Estático de Realimentación de Salida Robusto para Convertidores Buck-Boost"*. (2024). Co-advisor with Prof. Jonathan M. Palma.
-    * **Jeremy Rojas** — Ingeniería Civil Mecatrónica, Universidad de Talca. Thesis: *"Control LMI para canal de agua"*. (2023). Co-advisor with Prof. Jonathan M. Palma.
+* **Undergraduate Thesis Co-Supervision**:
+    * **Emilia Leyton Figueroa** — Mechatronics Engineering, University of Talca (2024). Thesis: *"Análisis del Desempeño de un Controlador Estático de Realimentación de Salida Robusto para Convertidores Buck-Boost"*. Co-advisor with Prof. Jonathan M. Palma.
+    * **Jeremy Rojas** — Mechatronics Engineering, University of Talca (2023). Thesis: *"Control LMI para canal de agua"*. Co-advisor with Prof. Jonathan M. Palma.

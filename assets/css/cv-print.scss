@@ -1,54 +1,96 @@
---- ---
+---
+---
 
 /* Basic LaTeX-style CSS for CV Print */
 @page {
     /* Standard A4 margins */
-    margin: 2cm 2.5cm;
+    margin: 1.8cm 2.2cm;
     size: A4 portrait;
 }
 
 body.layout--cv-print {
-    font-family: 'Latin Modern Roman', 'Times New Roman', serif;
-    font-size: 10pt;
-    line-height: 1.2;
+    font-family: 'LM Roman 10', 'Latin Modern Roman', 'EB Garamond', 'Times New Roman', serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
     color: #000;
-    background: #fff;
+    background: #f4f4f6;
     margin: 0;
-    padding: 0;
+    padding: 20px 0 40px;
     text-align: justify;
 }
 
-/* Hide everything else just in case */
+/* Hide main site chrome */
 .masthead,
 .sidebar,
 .page__footer,
-nav,
-.btn {
+nav {
     display: none !important;
+}
+
+/* Top screen-only toolbar */
+.cv-toolbar {
+    max-width: 21cm;
+    margin: 0 auto 16px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 10pt;
+}
+
+.cv-print-btn {
+    background: #1a365d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.cv-print-btn:hover {
+    background: #2b4c7e;
+}
+
+.cv-back-link {
+    color: #1a365d;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cv-back-link:hover {
+    text-decoration: underline;
 }
 
 /* Layout */
 .cv-container {
-    max-width: 100%;
+    max-width: 21cm;
     margin: 0 auto;
+    background: #fff;
+    padding: 2cm 2.2cm;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
 }
 
 /* Header */
 .cv-header {
     text-align: center;
-    margin-bottom: 2em;
+    margin-bottom: 1.6em;
 }
 
 .cv-header h1 {
-    font-size: 24pt;
+    font-size: 22pt;
     font-variant: small-caps;
     font-weight: normal;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     letter-spacing: 1px;
+    color: #000;
 }
 
 .cv-contact {
-    font-size: 10pt;
+    font-size: 9.5pt;
+    color: #111;
 }
 
 .cv-contact a {
@@ -56,87 +98,57 @@ nav,
     text-decoration: none;
 }
 
+.cv-contact a:hover {
+    text-decoration: underline;
+}
+
 .cv-contact i {
-    margin-right: 5px;
+    margin-right: 3px;
 }
 
 .cv-contact-sep {
-    margin: 0 10px;
+    margin: 0 6px;
+    color: #444;
 }
 
 /* Sections */
 .cv-section {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.3em;
 }
 
 .cv-section-title {
-    font-size: 12pt;
+    font-size: 11.5pt;
     font-variant: small-caps;
-    font-weight: normal;
+    font-weight: bold;
     text-transform: uppercase;
-    margin: 0 0 5px 0;
+    margin: 0 0 3px 0;
+    letter-spacing: 0.5px;
+    color: #000;
     page-break-after: avoid;
+    break-after: avoid;
 }
 
 .cv-section-hr {
     border: 0;
     border-bottom: 1px solid #000;
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
+    page-break-after: avoid;
+    break-after: avoid;
 }
 
-/* Profiles */
-.cv-profiles table,
-.cv-education table {
-    width: 100%;
-    border-collapse: collapse;
+.cv-section ul {
+    margin: 0 0 0.5em 0;
+    padding-left: 1.4em;
 }
 
-.cv-profiles td,
-.cv-education td {
-    padding: 3px 0;
-    vertical-align: top;
-}
-
-.cv-profiles td:first-child {
-    font-weight: bold;
-    width: 200px;
-}
-
-.cv-profiles a {
-    color: #000;
-    /* or keep original link color if preferred, but usually black in print */
-    text-decoration: none;
-}
-
-/* Education */
-.cv-education .edu-school {
-    font-weight: bold;
-}
-
-.cv-education .edu-degree {
-    font-style: italic;
-}
-
-.cv-education .edu-dates {
-    text-align: right;
-    font-style: italic;
-}
-
-/* Research Areas */
-.cv-areas td:first-child {
-    font-weight: bold;
-    width: 200px;
-}
-
-.cv-areas ul {
-    margin: 0;
-    padding-left: 20px;
+.cv-section li {
+    margin-bottom: 4px;
 }
 
 /* Publications */
 .cv-publications-list {
     padding-left: 2em;
-    margin: 0;
+    margin: 0 0 0.8em 0;
 }
 
 .cv-publications-list li::marker {
@@ -144,26 +156,23 @@ nav,
 }
 
 .cv-pub-item {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
 
-/* The sub-heading for Journal / Conference using a bullet */
 .cv-pub-type {
     font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    page-break-after: avoid;
+    break-after: avoid;
 }
 
 .cv-pub-type::before {
     content: "• ";
 }
 
-/* We need to format the author list. We'll just display it as text */
-.cv-authors {
-    display: inline;
-}
-
-/* Bold the user's name (Fuentes, R.M.) if possible via Liquid, or just do our best */
 .cv-pub-title {
     display: inline;
     font-style: italic;
@@ -179,7 +188,7 @@ nav,
 }
 
 .cv-pub-doi {
-    color: #0056b3;
+    color: #004494;
     text-decoration: none;
 }
 
@@ -187,16 +196,23 @@ nav,
 .cv-references {
     width: 100%;
     border-collapse: collapse;
+    border: none;
+}
+
+.cv-references tr,
+.cv-references td {
+    border: none;
 }
 
 .cv-references td {
-    padding: 8px 0;
+    padding: 6px 0;
     vertical-align: top;
+    font-size: 10pt;
 }
 
 .cv-references .ref-name {
-    width: 200px;
-    padding-right: 20px;
+    width: 190px;
+    padding-right: 16px;
     white-space: nowrap;
 }
 
@@ -204,9 +220,27 @@ nav,
     text-align: justify;
 }
 
-@media print {
+.cv-references a {
+    color: #000;
+    text-decoration: none;
+}
 
-    /* Ensure background colors/images are printed if any, though we use standard black/white */
+@media print {
+    body.layout--cv-print {
+        background: #fff;
+        padding: 0;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .cv-container {
+        max-width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;

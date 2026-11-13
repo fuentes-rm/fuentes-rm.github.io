@@ -17,9 +17,17 @@ Education
 ======
 {% include education.md %}
 
-Work experience
+Work Experience
 ======
 {% include work_experience.md %}
+
+Teaching Experience
+======
+{% include teaching_cv.md %}
+
+Thesis Supervision
+======
+{% include students.md %}
   
 Research Interests
 ======

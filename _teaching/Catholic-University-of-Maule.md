@@ -1,14 +1,14 @@
 ---
 title: "Catholic University of Maule"
 collection: teaching
-type: "Undergraduate course"
+type: "Undergraduate courses (Lecturer)"
 permalink: /teaching/Catholic-University-of-Maule
 venue: "Catholic University of Maule, Faculty of Engineering"
-date: 2021-03-01
+date: 2022-03-01
 location: "Talca, Chile"
 ---
 
-In this institution I did teaching in the following courses as a responsible professor:
+At this institution, I served as the lecturer in charge for the following undergraduate courses:
 
 Sistemas Dinámicos Lineales
 ======

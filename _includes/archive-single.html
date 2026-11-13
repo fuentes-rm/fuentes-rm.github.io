@@ -22,8 +22,10 @@
     {% endif %}
 
     <h2 class="archive__item-title" itemprop="headline">
-      {% if post.paperurl %}
-      <a href="{{ post.paperurl }}">{{ title }}</a>
+      {% if post.paperurl and post.paperurl != "#" %}
+      <a href="{{ post.paperurl }}" target="_blank" rel="noopener">{{ title }}</a>
+      {% elsif post.pdfurl %}
+      <a href="{{ base_path }}{{ post.pdfurl }}" target="_blank" rel="noopener">{{ title }}</a>
       {% elsif post.link %}
       <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i
           class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
@@ -57,15 +59,19 @@
     {% endif %}
 
     {% assign links = "" | split: "" %}
-    {% if post.paperurl %}
-    {% capture link %}<a href="{{ post.paperurl }}">Download Paper</a>{% endcapture %}
+    {% if post.paperurl and post.paperurl != "#" %}
+    {% capture link %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> DOI / Publisher</a>{% endcapture %}
+    {% assign links = links | push: link %}
+    {% endif %}
+    {% if post.pdfurl %}
+    {% capture link %}<a href="{{ base_path }}{{ post.pdfurl }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
     {% if post.slidesurl %}
     {% capture link %}<a href="{{ post.slidesurl }}">Download Slides</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
-    {% if post.codeurl %}
+    {% if post.codeurl and post.codeurl != "#" %}
     {% capture link %}<a href="{{ post.codeurl }}">Download Code</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
@@ -78,11 +84,11 @@
     <p>Recommended citation: {{ post.citation }}
       {% if links.size > 0 %}
       <br />
-      {{ links | join: ' | ' }}
+      {{ links | join: ' &nbsp;|&nbsp; ' }}
       {% endif %}
     </p>
     {% elsif links.size > 0 %}
-    <p>{{ links | join: ' | ' }}</p>
+    <p>{{ links | join: ' &nbsp;|&nbsp; ' }}</p>
     {% endif %}
 
   </article>
