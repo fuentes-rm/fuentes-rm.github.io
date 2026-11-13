@@ -1,0 +1,64 @@
+name: Sync and Update Publications
+
+on:
+  # 1. Run automatically whenever RMFUENTES.bib or publication scripts are modified
+  push:
+    branches:
+      - master
+      - Test
+    paths:
+      - 'files/RMFUENTES.bib'
+      - 'scripts/update_publications.py'
+      - 'scripts/sync_orcid_publications.py'
+  # 2. Run automatically every Monday at 08:00 UTC to fetch new papers from ORCID
+  schedule:
+    - cron: '0 8 * * 1'
+  # 3. Allow manual execution from the GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      sync_orcid:
+        description: 'Fetch new publications from ORCID API before regenerating files'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  update-publications:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install pyyaml bibtexparser
+
+      - name: Sync ORCID and regenerate publication files
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            python3 scripts/sync_orcid_publications.py --bib-only
+          elif [ "${{ inputs.sync_orcid }}" = "false" ]; then
+            python3 scripts/sync_orcid_publications.py --bib-only
+          else
+            python3 scripts/sync_orcid_publications.py
+          fi
+
+      - name: Commit and push updated publications
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add files/RMFUENTES.bib _publications/ _data/cv.json
+          if git diff --cached --quiet; then
+            echo "No publication changes to commit."
+          else
+            git commit -m "chore(publications): automated sync and update of publications"
+            git push
+          fi

@@ -22,14 +22,12 @@ RUN chown -R vscode:vscode /usr/src/app
 USER vscode
 
 # Copy Gemfile into the container (necessary for `bundle install`)
-COPY Gemfile ./
-
-
+COPY --chown=vscode:vscode Gemfile ./
 
 # Install bundler and dependencies
 RUN gem install connection_pool:2.5.0
 RUN gem install bundler:2.3.26
 RUN bundle install
 
-# Command to serve the Jekyll site
-CMD ["jekyll", "serve", "-H", "0.0.0.0", "-w", "--config", "_config.yml,_config_docker.yml"]
+# Command to serve the Jekyll site with LiveReload
+CMD ["bundle", "exec", "jekyll", "serve", "-l", "-H", "0.0.0.0", "-w", "--config", "_config.yml,_config_docker.yml"]
