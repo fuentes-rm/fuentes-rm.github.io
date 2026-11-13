@@ -36,44 +36,7 @@
     ]
   },
   "work": [],
-  "education": [
-    {
-      "institution": "University of Talca",
-      "area": "Ph.D in Engineering Systems",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2027",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "University of Talca",
-      "area": "M.S. in Engineering Science - Energy conversion",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2023",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "University of Talca",
-      "area": "Engineer in Mechatronics",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2021",
-      "gpa": null,
-      "courses": []
-    },
-    {
-      "institution": "University of Talca",
-      "area": "B.S. in Engineering Science",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2021",
-      "gpa": null,
-      "courses": []
-    }
-  ],
+  "education": [],
   "skills": [],
   "languages": [],
   "interests": [],
