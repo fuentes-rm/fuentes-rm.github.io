@@ -7,6 +7,7 @@
 * **Dr. Márcio J. Lacerda** — London Metropolitan University, UK. [Profile](https://lacerdamj.github.io/).
 * **Dr. André M. de Oliveira** — Federal University of São Paulo (UNIFESP), Brazil. [Profile](https://orcid.org/0000-0003-4351-3896).
 * **Dr. Gabriela W. Gabriel** — Aeronautics Institute of Technology (ITA), Brazil. [Profile](https://orcid.org/0000-0001-5631-9270).
+* **Dr. João M. Gomes da Silva Jr.** — Federal University of Rio Grande do Sul (UFRGS), Brazil. [Profile](https://orcid.org/0000-0001-9528-6969).
 * **M.Sc. Esteban I. Marciel** — University of Talca, Chile. [Profile](https://orcid.org/0000-0002-7641-0319).
 * **Dr. Carlos R. Baier** — University of Talca, Chile. [Profile](https://orcid.org/0000-0002-1752-1625).
 * **Dr. Alejandro J. Rojas** — University of Concepción, Chile. [Profile](https://orcid.org/0000-0002-3867-6909).

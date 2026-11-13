@@ -248,6 +248,18 @@ International Research Network
 
   <div class="person-card">
     <div>
+      <div class="person-name">Dr. João M. Gomes da Silva Jr.</div>
+      <span class="person-role">Research Collaborator</span>
+      <div class="person-affil">Federal University of Rio Grande do Sul (UFRGS), Brazil<br><small>Department of Electrical Systems &amp; Control</small></div>
+    </div>
+    <div class="person-links">
+      <a href="https://orcid.org/0000-0001-9528-6969" target="_blank" rel="noopener" class="person-btn"><i class="ai ai-orcid"></i> ORCID</a>
+      <a href="{{ base_path }}/publications/?q=Gomes+da+Silva" class="person-btn"><i class="fas fa-book-open"></i> Joint Papers</a>
+    </div>
+  </div>
+
+  <div class="person-card">
+    <div>
       <div class="person-name">M.Sc. Marcelo Aravena</div>
       <span class="person-role">Research Collaborator</span>
       <div class="person-affil">University of Campinas (UNICAMP), SP, Brazil</div>
