@@ -55,6 +55,7 @@ Research Thrusts
 
 Latest Milestones
 ======
+* **2026 November** I am glad to announce our newly published article titled ["Pure digital dynamic output feedback for uncertain aperiodic sampled-data systems"](https://doi.org/10.1016/j.nahs.2026.101799) in collaboration with Ricardo C. L. F. Oliveira, João M. Gomes da Silva Jr., and Jonathan M. Palma in the peer-reviewed journal _Nonlinear Analysis: Hybrid Systems_.
 * **2026 May** I started a visiting research stay at [London Metropolitan University](https://www.londonmet.ac.uk). The supervisor for my visit is Prof. [Márcio J. Lacerda](https://lacerdamj.github.io), my Ph.D. co-advisor. I will remain here until the end of June 2026.
 * **2026 March** I am glad to announce our recently published article titled ["H₂ gain-scheduling dynamic output-feedback with D-stability applied to electronic systems"](https://doi.org/10.1016/j.conengprac.2026.106881) in collaboration with Sergio A. Valdivia, Esteban I. Marciel, Carlos R. Baier, Cecilia F. Morais, and Jonathan M. Palma in the peer-reviewed journal _Control Engineering Practice_. 
 * **2026 February** I am glad to announce our recently published article titled ["Constant reference tracking control for uncertain linear sampled-data systems"](https://doi.org/10.1016/j.nahs.2025.101651) in collaboration with Gabriela W. Gabriel, André M. de Oliveira, and Jonathan M. Palma in the peer-reviewed journal _Nonlinear Analysis: Hybrid Systems_. 
@@ -64,6 +65,7 @@ Latest Milestones
 
 Selected Journal Publications
 ======
+* **Fuentes, R. M., Oliveira, R. C. L. F., Gomes da Silva Jr., J. M., & Palma, J. M.** (2026). *"Pure digital dynamic output feedback for uncertain aperiodic sampled-data systems."* **Nonlinear Analysis: Hybrid Systems**, 62, 101799. [[DOI]](https://doi.org/10.1016/j.nahs.2026.101799)
 * **Valdivia, S. A., Fuentes, R. M., Marciel, E. I., Baier, C. R., Morais, C. F., & Palma, J. M.** (2026). *"H₂ gain-scheduling dynamic output-feedback with D-stability applied to electronic systems."* **Control Engineering Practice**, 172, 106881. [[DOI]](https://doi.org/10.1016/j.conengprac.2026.106881)
 * **Fuentes, R. M., Gabriel, G. W., de Oliveira, A. M., & Palma, J. M.** (2026). *"Constant reference tracking control for uncertain linear sampled-data systems."* **Nonlinear Analysis: Hybrid Systems**, 59, 101651. [[DOI]](https://doi.org/10.1016/j.nahs.2025.101651) [[PDF]](/files/constant-reference-tracking.pdf)
 * **Fuentes, R. M., Marciel, E. I., Baier, C. R., Gabriel, G. W., Morais, C. F., Lacerda, M. J., & Palma, J. M.** (2025). *"A New Convex Approach for Grid-Supporting Inverter Control Based on DLMIs."* **IEEE Transactions on Industrial Informatics**, 21(12), 9631–9642. [[DOI]](https://doi.org/10.1109/TII.2025.3598523) [[PDF]](/files/new-convex-approach.pdf)

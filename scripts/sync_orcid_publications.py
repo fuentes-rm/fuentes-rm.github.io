@@ -158,6 +158,14 @@ def sync_orcid(orcid_id):
         title_val = (((summary.get("title") or {}).get("title") or {}).get("value")) or ""
         t_slug = slugify(clean_text(title_val))[:45]
 
+        pub_date = summary.get("publication-date") or {}
+        pub_year_str = ((pub_date.get("year") or {}).get("value")) or ""
+        try:
+            if pub_year_str and int(pub_year_str) < 2021:
+                continue
+        except ValueError:
+            pass
+
         doi = extract_doi_from_external_ids(group.get("external-ids")) or extract_doi_from_external_ids(
             summary.get("external-ids")
         )

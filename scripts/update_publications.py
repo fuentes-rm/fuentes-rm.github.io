@@ -204,6 +204,7 @@ def main():
         return
 
     entries = load_bib_entries(bib_file_path)
+    generated_files = set()
 
     for entry in entries:
         title = clean_text(entry.get('title', 'Unknown Title'))
@@ -305,11 +306,17 @@ def main():
         md_content = "\n".join(lines)
         file_name = f"{file_date_str}-{file_identifier}.md"
         file_path = os.path.join(pub_dir, file_name)
+        generated_files.add(file_name)
 
         with open(file_path, 'w', encoding='utf-8') as f:
             f.write(md_content)
 
         print(f"Created/Updated: {file_name}")
+
+    for existing_file in os.listdir(pub_dir):
+        if existing_file.endswith('.md') and existing_file not in generated_files:
+            os.remove(os.path.join(pub_dir, existing_file))
+            print(f"Removed stale publication file: {existing_file}")
 
     print(f"\nSuccessfully processed {len(entries)} publications from BibTeX!")
 
