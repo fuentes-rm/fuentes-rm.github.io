@@ -26,7 +26,6 @@ def slugify(value):
     """
     if not value:
         return ""
-    # Replace special math symbols before ascii normalization so slugs stay recognizable
     value = str(value).replace('H∞', 'h_nfty').replace('H_ınfty', 'h_nfty').replace('H₂', 'h2')
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore').decode('ascii')
     value = re.sub(r'[^\w\s-]', '', value.lower())
@@ -36,7 +35,6 @@ def slugify(value):
 def clean_text(text):
     if not text:
         return ''
-    # Convert common LaTeX math/accents before stripping braces
     text = text.replace(r'\_\infty', '∞').replace(r'_\infty', '∞').replace('H\\_ınfty', 'H∞').replace('H_ınfty', 'H∞')
     text = text.replace('{', '').replace('}', '').replace('\\', '')
     text = text.replace('\n', ' ')
@@ -101,6 +99,46 @@ def normalize_doi_url(doi_raw, url_raw):
     return '', ''
 
 
+def infer_topic(title, venue):
+    text = f"{title} {venue}".lower()
+    if any(k in text for k in ['sampled-data', 'dlmi', 'packet']):
+        return 'sampled-data'
+    if any(k in text for k in ['gain-schedul', 'lpv', 'd-stability', 'metaheuristic', 'lqr']):
+        return 'gain-scheduling'
+    if any(k in text for k in ['solar', 'photovoltaic', 'mppt', 'agrifood', 'greenhouse']):
+        return 'solar-energy'
+    return 'control-applications'
+
+
+def build_clean_bibtex(entry, entry_type, title, venue, year, doi_clean):
+    cite_id = entry.get('ID', f"fuentes_{year}")
+    authors_raw = clean_text(entry.get('author', '')).replace('\\"', '"')
+    clean_title = title.replace('\\"', '"')
+    clean_venue = venue.replace('\\"', '"')
+    lines = [f"@{entry_type}{{{cite_id},"]
+    lines.append(f"  author = {{{authors_raw}}},")
+    lines.append(f"  title = {{{clean_title}}},")
+    if entry_type == 'article':
+        lines.append(f"  journal = {{{clean_venue}}},")
+    else:
+        lines.append(f"  booktitle = {{{clean_venue}}},")
+    if entry.get('volume'):
+        lines.append(f"  volume = {{{clean_text(entry.get('volume'))}}},")
+    if entry.get('number'):
+        lines.append(f"  number = {{{clean_text(entry.get('number'))}}},")
+    if entry.get('pages'):
+        lines.append(f"  pages = {{{clean_text(entry.get('pages'))}}},")
+    lines.append(f"  year = {{{year}}},")
+    if doi_clean:
+        lines.append(f"  doi = {{{doi_clean}}}")
+    lines.append("}")
+    return "\n".join(lines)
+
+
+def yaml_single_quote(val):
+    return "'" + str(val).replace("'", "''") + "'"
+
+
 def main():
     bib_file_path = 'files/RMFUENTES.bib'
     pub_dir = '_publications/'
@@ -122,7 +160,6 @@ def main():
         entry_type = entry.get('ENTRYTYPE', '').lower()
         journal_name = clean_text(entry.get('journal', ''))
 
-        # Determine category and venue
         if entry_type == 'article' and 'unpublished' not in journal_name.lower():
             category = 'journals'
             venue = journal_name
@@ -133,18 +170,16 @@ def main():
             category = 'conferences'
             venue = journal_name or 'Unpublished manuscript / Under Review'
 
-        # Process Authors
         authors_raw = entry.get('author', '')
         authors_formatted = format_authors(authors_raw)
+        authors_list = [a.strip().replace('\\"', '"') for a in clean_text(authors_raw).split(' and ') if a.strip()]
 
-        # Process URL / DOI and local PDF
         paperurl, doi_clean = normalize_doi_url(entry.get('doi', ''), entry.get('url', ''))
         pdfurl = clean_text(entry.get('pdf', ''))
 
-        abstract = clean_text(entry.get('abstract', ''))
+        abstract = clean_text(entry.get('abstract', '')).replace('\\"', '"')
         excerpt = abstract[:220] + '...' if len(abstract) > 220 else abstract
 
-        # Use YYYY-01-01 for filename stability, and YYYY-MM-01 for chronological sorting in front matter
         file_date_str = f"{year}-01-01"
         sort_date_str = f"{year}-{month}-01"
 
@@ -163,7 +198,6 @@ def main():
 
         file_identifier = f"{title_slug}-{author_slug}"
 
-        # Build detailed citation with volume/number/pages/DOI when available
         volume = clean_text(entry.get('volume', ''))
         number = clean_text(entry.get('number', ''))
         pages = clean_text(entry.get('pages', '')).replace('--', '–')
@@ -177,26 +211,42 @@ def main():
             venue_details += f", {pages}"
 
         citation = f'{authors_formatted} ({year}). "{title}." {venue_details}.'
+        topic = infer_topic(title, venue)
+        bibtex_str = build_clean_bibtex(entry, entry_type, title, venue, year, doi_clean)
 
         lines = [
             "---",
             f'title: "{title}"',
             "collection: publications",
             f"category: {category}",
+            f"topic: {topic}",
             f"permalink: /publication/{year}-{file_identifier}",
-            f"excerpt: '{excerpt}'",
+            f"excerpt: {yaml_single_quote(excerpt)}",
+            f"abstract: {yaml_single_quote(abstract)}",
             f"date: {sort_date_str}",
-            f"venue: '{venue}'",
+            f"venue: {yaml_single_quote(venue)}",
         ]
         if paperurl:
-            lines.append(f"paperurl: '{paperurl}'")
+            lines.append(f"paperurl: {yaml_single_quote(paperurl)}")
         if pdfurl:
-            lines.append(f"pdfurl: '{pdfurl}'")
+            lines.append(f"pdfurl: {yaml_single_quote(pdfurl)}")
         if doi_clean:
-            lines.append(f"doi: '{doi_clean}'")
-        lines.append(f"citation: '{citation}'")
+            lines.append(f"doi: {yaml_single_quote(doi_clean)}")
+        if authors_list:
+            lines.append("authors:")
+            for auth in authors_list:
+                lines.append(f"  - {yaml_single_quote(auth)}")
+        lines.append(f"citation: {yaml_single_quote(citation)}")
+        lines.append("bibtex: |")
+        for bline in bibtex_str.splitlines():
+            lines.append(f"  {bline}")
         lines.append("---")
         lines.append("")
+        if abstract:
+            lines.append("## Abstract")
+            lines.append("")
+            lines.append(abstract)
+            lines.append("")
 
         md_content = "\n".join(lines)
         file_name = f"{file_date_str}-{file_identifier}.md"

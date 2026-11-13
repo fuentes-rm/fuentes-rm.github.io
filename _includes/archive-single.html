@@ -12,12 +12,11 @@
 {% assign title = post.title %}
 {% endif %}
 
-<li class="{{ include.type | default: " list" }}__item">
+<li class="{{ include.type | default: "list" }}__item pub-entry" data-topic="{{ post.topic | default: 'all' }}" data-year="{{ post.date | date: '%Y' }}">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}
     <div class="archive__item-teaser">
-      <img src={% if teaser contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | prepend: " /images/" | prepend:
-        base_path }}" {% endif %} alt="">
+      <img src={% if teaser contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | prepend: "/images/" | prepend: base_path }}" {% endif %} alt="">
     </div>
     {% endif %}
 
@@ -41,54 +40,79 @@
     {% if post.collection == 'teaching' %}
     <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
     {% elsif post.collection == 'publications' %}
-    <p>Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+    <p style="margin-bottom: 0.4em;">Published in <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
     {% elsif post.date %}
     <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{
         site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time
-        datetime="{{ post.date | default: " 1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" |
+        datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" |
         date: "%B %d, %Y" }}</time></p>
     {% endif %}
 
-    {% if post.excerpt and site.read_more != 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
-    {% elsif post.excerpt and site.read_more == 'enabled' %}
-    <p class="archive__item-excerpt" itemprop="description">
-    <p>{{ post.excerpt | markdownify | remove: '
-    <p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p>
-    </p>
+    {% if post.collection != 'publications' %}
+      {% if post.excerpt and site.read_more != 'enabled' %}
+      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>
+      {% elsif post.excerpt and site.read_more == 'enabled' %}
+      <p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}<strong><a href="{{ base_path }}{{ post.url }}" rel="permalink"> Read more</a></strong></p>
+      {% endif %}
     {% endif %}
 
     {% assign links = "" | split: "" %}
     {% if post.paperurl and post.paperurl != "#" %}
-    {% capture link %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> DOI / Publisher</a>{% endcapture %}
+    {% capture link %}<a href="{{ post.paperurl }}" target="_blank" rel="noopener" class="pub-btn"><i class="fas fa-external-link-alt" aria-hidden="true"></i> DOI / Publisher</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
     {% if post.pdfurl %}
-    {% capture link %}<a href="{{ base_path }}{{ post.pdfurl }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF</a>{% endcapture %}
+    {% capture link %}<a href="{{ base_path }}{{ post.pdfurl }}" target="_blank" rel="noopener" class="pub-btn"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF</a>{% endcapture %}
+    {% assign links = links | push: link %}
+    {% endif %}
+    {% if post.abstract and post.abstract != "" %}
+    {% capture link %}<button type="button" class="pub-btn pub-toggle-btn" onclick="togglePubDrawer(this, 'abs')"><i class="fas fa-align-left" aria-hidden="true"></i> Abstract</button>{% endcapture %}
+    {% assign links = links | push: link %}
+    {% endif %}
+    {% if post.bibtex and post.bibtex != "" %}
+    {% capture link %}<button type="button" class="pub-btn pub-toggle-btn" onclick="togglePubDrawer(this, 'bib')"><i class="fas fa-quote-right" aria-hidden="true"></i> BibTeX</button>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
     {% if post.slidesurl %}
-    {% capture link %}<a href="{{ post.slidesurl }}">Download Slides</a>{% endcapture %}
+    {% capture link %}<a href="{{ post.slidesurl }}" class="pub-btn">Download Slides</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
     {% if post.codeurl and post.codeurl != "#" %}
-    {% capture link %}<a href="{{ post.codeurl }}">Download Code</a>{% endcapture %}
+    {% capture link %}<a href="{{ post.codeurl }}" class="pub-btn"><i class="fas fa-code" aria-hidden="true"></i> Code</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
     {% if post.bibtexurl %}
-    {% capture link %}<a href="{{ post.bibtexurl }}">Download Bibtex</a>{% endcapture %}
+    {% capture link %}<a href="{{ post.bibtexurl }}" class="pub-btn">Download Bibtex</a>{% endcapture %}
     {% assign links = links | push: link %}
     {% endif %}
 
     {% if post.citation %}
-    <p>Recommended citation: {{ post.citation }}
-      {% if links.size > 0 %}
-      <br />
-      {{ links | join: ' &nbsp;|&nbsp; ' }}
+    <p style="margin-bottom: 0.4em;">Recommended citation: {{ post.citation }}</p>
+    {% endif %}
+
+    {% if links.size > 0 or post.doi %}
+    <div class="pub-actions-row">
+      {{ links | join: ' ' }}
+      {% if post.doi %}
+      <span class="__dimensions_badge_embed__" data-doi="{{ post.doi }}" data-style="small_rectangle" data-hide-zero-citations="true" style="display: inline-block; vertical-align: middle; margin-left: 4px;"></span>
       {% endif %}
-    </p>
-    {% elsif links.size > 0 %}
-    <p>{{ links | join: ' &nbsp;|&nbsp; ' }}</p>
+    </div>
+    {% endif %}
+
+    {% if post.abstract and post.abstract != "" %}
+    <div class="pub-drawer pub-drawer-abs" hidden>
+      <strong>Abstract:</strong> {{ post.abstract }}
+    </div>
+    {% endif %}
+
+    {% if post.bibtex and post.bibtex != "" %}
+    <div class="pub-drawer pub-drawer-bib" hidden>
+      <div class="pub-bib-header">
+        <strong>BibTeX Citation</strong>
+        <button type="button" class="pub-copy-btn" onclick="copyBibtex(this)"><i class="fas fa-copy" aria-hidden="true"></i> Copy BibTeX</button>
+      </div>
+      <pre class="pub-bib-pre"><code>{{ post.bibtex | escape }}</code></pre>
+    </div>
     {% endif %}
 
   </article>

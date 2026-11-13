@@ -133,14 +133,14 @@
       "publisher": "CONTROLO 2022",
       "releaseDate": "2022-01-01",
       "website": "https://doi.org/10.1007/978-3-031-10047-5_42",
-      "summary": ""
+      "summary": "The present work tackles the H\u221e packet-based control design in the autonomous vehicle platoon (AVP) problem based on digital redesign of a linear parameter-varying system under the presence of Denial of Service (DoS) att..."
     },
     {
       "name": "Gain-Scheduled Control Design Applied to Classical dc\u2013dc Converters in Photovoltaic Systems and Constant Power Loads",
       "publisher": "Mathematics",
       "releaseDate": "2022-09-01",
       "website": "https://doi.org/10.3390/math10193467",
-      "summary": ""
+      "summary": "This paper investigates the problem of control design for dc\u2013dc converters, suitable to address variations in the input voltage in photovoltaic systems and constant power loads. The proposed approach models the converter..."
     },
     {
       "name": "Alternative controller synthesize methods with H\u221e performance for an uncertain system based on metaheuristic optimization",
@@ -154,28 +154,28 @@
       "publisher": "Journal of the Franklin Institute",
       "releaseDate": "2024-01-01",
       "website": "https://doi.org/10.1016/j.jfranklin.2024.106704",
-      "summary": ""
+      "summary": "This paper introduces an approach for designing gain-scheduled dynamic output feedback controllers for continuous-time Linear Parameter-Varying (LPV) systems. The aim is to improve transient response by incorporating bot..."
     },
     {
       "name": "A New Convex Approach for Grid-Supporting Inverter Control Based on DLMIs",
       "publisher": "IEEE Transactions on Industrial Informatics",
       "releaseDate": "2025-12-01",
       "website": "https://doi.org/10.1109/TII.2025.3598523",
-      "summary": ""
+      "summary": "The objective of this paper is to validate a dynamic output-feedback (DOF) control synthesis methodology to be implemented through digital signal processors (DSPs) in the scope of electrical microgrid applications. The D..."
     },
     {
       "name": "Reference tracking in sampled-data systems: a DLMI-based purely-discrete PID framework",
       "publisher": "2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
       "releaseDate": "2025-10-01",
       "website": "https://doi.org/10.1109/CHILECON66915.2025.11476329",
-      "summary": ""
+      "summary": "This paper presents a tracking reference design condition based on a purely discrete-time PID controller aimed at sampled-data linear systems operating over hybrid time domains. The proposed method formulates the PID tun..."
     },
     {
       "name": "Constant reference tracking control for uncertain linear sampled-data systems",
       "publisher": "Nonlinear Analysis: Hybrid Systems",
       "releaseDate": "2026-02-01",
       "website": "https://doi.org/10.1016/j.nahs.2025.101651",
-      "summary": "This paper addresses the problem of constant reference tracking control for uncertain linear sampled-data systems. The main contribution of this paper is the development of a novel control strategy that ensures the track..."
+      "summary": "This paper studies the reference-tracking control problem for uncertain sampled-data systems with partial observation of the states. We show that, by robustly stabilizing the closed-loop system, the proposed digital cont..."
     },
     {
       "name": "H\u2082 gain-scheduling dynamic output-feedback with D-stability applied to electronic systems",
@@ -185,36 +185,7 @@
       "summary": "This paper establishes novel synthesis conditions in terms of linear matrix inequalities (LMIs) for the design of a full-order dynamic output-feedback (DOF) controller for continuous-time Linear Parameter-Varying (LPV) s..."
     }
   ],
-  "presentations": [
-    {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
-    },
-    {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
-    }
-  ],
+  "presentations": [],
   "teaching": [
     {
       "course": "Catholic University of Maule",
@@ -231,13 +202,5 @@
       "description": ""
     }
   ],
-  "portfolio": [
-    {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
-      "date": "",
-      "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
-    }
-  ]
+  "portfolio": []
 }

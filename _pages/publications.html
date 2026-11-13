@@ -6,35 +6,158 @@ author_profile: true
 ---
 
 {% if site.author.googlescholar %}
-<div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar
-        profile</a>.</div>
+<div class="wordwrap" style="margin-bottom: 1em;">You can also find my articles on <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener">my Google Scholar profile</a>, <a href="{{ site.author.orcid }}" target="_blank" rel="noopener">ORCID</a>, and <a href="{{ site.author.scopus }}" target="_blank" rel="noopener">Scopus</a>.</div>
 {% endif %}
 
 {% include base_path %}
 
 <style>
+    .pub-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6em;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1em 0 1.5em 0;
+        padding: 0.75em 1em;
+        border: 1px solid var(--global-border-color, #e0e0e0);
+        border-radius: 8px;
+        background: var(--global-toc-bg-color, rgba(0, 0, 0, 0.02));
+    }
+
+    .pub-filter-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4em;
+    }
+
+    .pub-filter-pill {
+        padding: 0.3em 0.75em;
+        font-size: 0.82em;
+        border-radius: 999px;
+        border: 1px solid var(--global-border-color, #ccc);
+        background: var(--global-bg-color, #fff);
+        color: var(--global-text-color, #333);
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .pub-filter-pill:hover,
+    .pub-filter-pill.active {
+        background: var(--global-link-color, #2b6cb0);
+        color: #fff;
+        border-color: var(--global-link-color, #2b6cb0);
+    }
+
+    .pub-search-input {
+        padding: 0.35em 0.75em;
+        font-size: 0.85em;
+        border: 1px solid var(--global-border-color, #ccc);
+        border-radius: 6px;
+        background: var(--global-bg-color, #fff);
+        color: var(--global-text-color, #333);
+        min-width: 210px;
+    }
+
     .pub-list {
-        padding-left: 2.5em;
+        padding-left: 2.2em;
     }
 
     .pub-list li::marker {
-        font-size: 1.3em;
+        font-size: 1.15em;
         font-weight: bold;
     }
+
+    .pub-actions-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.45em;
+        margin-top: 0.35em;
+        margin-bottom: 0.5em;
+    }
+
+    .pub-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
+        padding: 0.2em 0.65em;
+        font-size: 0.78em;
+        font-weight: 500;
+        border-radius: 5px;
+        border: 1px solid var(--global-border-color, #ccc);
+        background: var(--global-bg-color, #fff);
+        color: var(--global-text-color, #333) !important;
+        text-decoration: none !important;
+        cursor: pointer;
+        transition: all 0.15s ease;
+    }
+
+    .pub-btn:hover {
+        border-color: var(--global-link-color, #2b6cb0);
+        color: var(--global-link-color, #2b6cb0) !important;
+    }
+
+    .pub-drawer {
+        margin: 0.5em 0 1em 0;
+        padding: 0.8em 1em;
+        border-left: 3px solid var(--global-link-color, #2b6cb0);
+        background: var(--global-toc-bg-color, rgba(0, 0, 0, 0.03));
+        border-radius: 0 6px 6px 0;
+        font-size: 0.88em;
+        line-height: 1.5;
+    }
+
+    .pub-bib-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.4em;
+    }
+
+    .pub-copy-btn {
+        padding: 0.2em 0.6em;
+        font-size: 0.8em;
+        border-radius: 4px;
+        border: 1px solid var(--global-border-color, #ccc);
+        background: var(--global-bg-color, #fff);
+        color: var(--global-text-color, #333);
+        cursor: pointer;
+    }
+
+    .pub-bib-pre {
+        margin: 0;
+        padding: 0.6em;
+        overflow-x: auto;
+        font-size: 0.85em;
+        border-radius: 4px;
+    }
 </style>
+
+<div class="pub-controls">
+    <div class="pub-filter-group" role="group" aria-label="Filter publications by research topic">
+        <button type="button" class="pub-filter-pill active" data-filter="all" onclick="filterPublications('all', this)">All</button>
+        <button type="button" class="pub-filter-pill" data-filter="sampled-data" onclick="filterPublications('sampled-data', this)">Sampled-Data &amp; DLMIs</button>
+        <button type="button" class="pub-filter-pill" data-filter="gain-scheduling" onclick="filterPublications('gain-scheduling', this)">LPV &amp; Gain-Scheduling</button>
+        <button type="button" class="pub-filter-pill" data-filter="solar-energy" onclick="filterPublications('solar-energy', this)">Solar &amp; Renewable Energy</button>
+    </div>
+    <input type="search" id="pub-search" class="pub-search-input" placeholder="Search title, author, venue, year..." oninput="applyPubFilters()" aria-label="Search publications">
+</div>
 
 <!-- New style rendering if publication categories are defined -->
 {% if site.publication_category %}
 {% for category in site.publication_category %}
 {% assign cat_pubs = site.publications | where: "category", category[0] %}
 {% if cat_pubs.size > 0 %}
-<h2>{{ category[1].title }}</h2>
-<hr />
-<ol reversed start="{{ cat_pubs.size }}" class="pub-list">
-    {% for post in cat_pubs reversed %}
-    {% include archive-single.html %}
-    {% endfor %}
-</ol>
+<div class="pub-category-block">
+    <h2>{{ category[1].title }}</h2>
+    <hr />
+    <ol reversed start="{{ cat_pubs.size }}" class="pub-list">
+        {% for post in cat_pubs reversed %}
+        {% include archive-single.html %}
+        {% endfor %}
+    </ol>
+</div>
 {% endif %}
 {% endfor %}
 {% else %}
@@ -44,3 +167,60 @@ author_profile: true
     {% endfor %}
 </ol>
 {% endif %}
+
+<script async src="https://badge.dimensions.ai/badge.js" charset="utf-8"></script>
+<script>
+    var activePubTopic = 'all';
+
+    function togglePubDrawer(btn, type) {
+        var article = btn.closest('article');
+        if (!article) return;
+        var drawer = article.querySelector('.pub-drawer-' + type);
+        if (!drawer) return;
+        var isHidden = drawer.hasAttribute('hidden');
+        if (isHidden) {
+            drawer.removeAttribute('hidden');
+        } else {
+            drawer.setAttribute('hidden', '');
+        }
+    }
+
+    function copyBibtex(btn) {
+        var drawer = btn.closest('.pub-drawer-bib');
+        if (!drawer) return;
+        var code = drawer.querySelector('code');
+        if (!code) return;
+        navigator.clipboard.writeText(code.innerText).then(function () {
+            var original = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function () {
+                btn.innerHTML = original;
+            }, 1800);
+        });
+    }
+
+    function filterPublications(topic, btn) {
+        activePubTopic = topic;
+        var pills = document.querySelectorAll('.pub-filter-pill');
+        pills.forEach(function (p) { p.classList.remove('active'); });
+        if (btn) btn.classList.add('active');
+        applyPubFilters();
+    }
+
+    function applyPubFilters() {
+        var query = (document.getElementById('pub-search').value || '').toLowerCase().trim();
+        var items = document.querySelectorAll('.pub-entry');
+        items.forEach(function (item) {
+            var itemTopic = item.getAttribute('data-topic') || '';
+            var text = item.innerText.toLowerCase();
+            var matchesTopic = (activePubTopic === 'all') || (itemTopic === activePubTopic);
+            var matchesQuery = !query || text.indexOf(query) !== -1;
+            item.style.display = (matchesTopic && matchesQuery) ? '' : 'none';
+        });
+
+        document.querySelectorAll('.pub-category-block').forEach(function (block) {
+            var visibleItems = block.querySelectorAll('.pub-entry:not([style*="display: none"])');
+            block.style.display = visibleItems.length > 0 ? '' : 'none';
+        });
+    }
+</script>

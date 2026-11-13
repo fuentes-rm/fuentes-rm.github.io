@@ -86,6 +86,14 @@ title: "Curriculum Vitae - Roberto M. Fuentes"
         {{ skills_content | markdownify }}
     </div>
 
+    <!-- Technical Skills & Languages -->
+    <div class="cv-section">
+        <h2 class="cv-section-title">Technical Skills &amp; Languages</h2>
+        <hr class="cv-section-hr">
+        {% capture tech_content %}{% include technical_skills.md %}{% endcapture %}
+        {{ tech_content | markdownify }}
+    </div>
+
     <!-- Contributions to Research (Publications) -->
     <div class="cv-section">
         <h2 class="cv-section-title">Contributions to Research</h2>

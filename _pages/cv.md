@@ -33,6 +33,10 @@ Research Interests
 ======
 {% include skills.md %}
 
+Technical Skills & Languages
+======
+{% include technical_skills.md %}
+
 Publications
 ======
 {% if site.publication_category %}
