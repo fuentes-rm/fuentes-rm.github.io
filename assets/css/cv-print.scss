@@ -1,0 +1,248 @@
+---
+---
+
+/* Basic LaTeX-style CSS for CV Print */
+@page {
+    /* Standard A4 margins */
+    margin: 1.8cm 2.2cm;
+    size: A4 portrait;
+}
+
+body.layout--cv-print {
+    font-family: 'LM Roman 10', 'Latin Modern Roman', 'EB Garamond', 'Times New Roman', serif;
+    font-size: 10.5pt;
+    line-height: 1.35;
+    color: #000;
+    background: #f4f4f6;
+    margin: 0;
+    padding: 20px 0 40px;
+    text-align: justify;
+}
+
+/* Hide main site chrome */
+.masthead,
+.sidebar,
+.page__footer,
+nav {
+    display: none !important;
+}
+
+/* Top screen-only toolbar */
+.cv-toolbar {
+    max-width: 21cm;
+    margin: 0 auto 16px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 10pt;
+}
+
+.cv-print-btn {
+    background: #1a365d;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.cv-print-btn:hover {
+    background: #2b4c7e;
+}
+
+.cv-back-link {
+    color: #1a365d;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.cv-back-link:hover {
+    text-decoration: underline;
+}
+
+/* Layout */
+.cv-container {
+    max-width: 21cm;
+    margin: 0 auto;
+    background: #fff;
+    padding: 2cm 2.2cm;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+/* Header */
+.cv-header {
+    text-align: center;
+    margin-bottom: 1.6em;
+}
+
+.cv-header h1 {
+    font-size: 22pt;
+    font-variant: small-caps;
+    font-weight: normal;
+    margin: 0 0 8px 0;
+    letter-spacing: 1px;
+    color: #000;
+}
+
+.cv-contact {
+    font-size: 9.5pt;
+    color: #111;
+}
+
+.cv-contact a {
+    color: #000;
+    text-decoration: none;
+}
+
+.cv-contact a:hover {
+    text-decoration: underline;
+}
+
+.cv-contact i {
+    margin-right: 3px;
+}
+
+.cv-contact-sep {
+    margin: 0 6px;
+    color: #444;
+}
+
+/* Sections */
+.cv-section {
+    margin-bottom: 1.3em;
+}
+
+.cv-section-title {
+    font-size: 11.5pt;
+    font-variant: small-caps;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 3px 0;
+    letter-spacing: 0.5px;
+    color: #000;
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+.cv-section-hr {
+    border: 0;
+    border-bottom: 1px solid #000;
+    margin: 0 0 8px 0;
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+.cv-section ul {
+    margin: 0 0 0.5em 0;
+    padding-left: 1.4em;
+}
+
+.cv-section li {
+    margin-bottom: 4px;
+}
+
+/* Publications */
+.cv-publications-list {
+    padding-left: 2em;
+    margin: 0 0 0.8em 0;
+}
+
+.cv-publications-list li::marker {
+    font-weight: bold;
+}
+
+.cv-pub-item {
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.cv-pub-type {
+    font-weight: bold;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+.cv-pub-type::before {
+    content: "• ";
+}
+
+.cv-pub-title {
+    display: inline;
+    font-style: italic;
+}
+
+.cv-pub-venue {
+    display: inline;
+    font-style: italic;
+}
+
+.cv-pub-year {
+    font-weight: bold;
+}
+
+.cv-pub-doi {
+    color: #004494;
+    text-decoration: none;
+}
+
+/* Personal References */
+.cv-references {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+.cv-references tr,
+.cv-references td {
+    border: none;
+}
+
+.cv-references td {
+    padding: 6px 0;
+    vertical-align: top;
+    font-size: 10pt;
+}
+
+.cv-references .ref-name {
+    width: 190px;
+    padding-right: 16px;
+    white-space: nowrap;
+}
+
+.cv-references .ref-info {
+    text-align: justify;
+}
+
+.cv-references a {
+    color: #000;
+    text-decoration: none;
+}
+
+@media print {
+    body.layout--cv-print {
+        background: #fff;
+        padding: 0;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+
+    .cv-container {
+        max-width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

@@ -1,14 +1,14 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
+    "name": "Roberto M. Fuentes Albornoz",
+    "email": "rfuentesalbornoz@gmail.com",
     "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "website": "https://fuentes-rm.github.io",
+    "summary": "Currently employed at University of Talca. Researcher in Control Theory and its application",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Earth",
+      "city": "Curic\u00f3, Chile",
       "countryCode": "US",
       "region": ""
     },
@@ -16,46 +16,60 @@
       {
         "network": "Google Scholar",
         "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+        "url": "https://scholar.google.com/citations?user=_kNbNSsAAAAJ"
       },
       {
         "network": "ORCID",
         "username": "",
-        "url": "https://orcid.org/yourorcidurl"
+        "url": "https://orcid.org/0000-0002-1310-9780"
+      },
+      {
+        "network": "ResearchGate",
+        "username": "",
+        "url": "https://www.researchgate.net/profile/Roberto-Fuentes-Albornoz"
       },
       {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "fuentes-rm",
+        "url": "https://github.com/fuentes-rm"
       }
     ]
   },
   "work": [],
   "education": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
+      "institution": "University of Talca",
+      "area": "Ph.D in Engineering Systems",
       "studyType": "",
       "startDate": "",
-      "endDate": "2018",
+      "endDate": "2027",
       "gpa": null,
       "courses": []
     },
     {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
+      "institution": "University of Talca",
+      "area": "M.S. in Engineering Science - Energy conversion",
       "studyType": "",
       "startDate": "",
-      "endDate": "2014",
+      "endDate": "2023",
       "gpa": null,
       "courses": []
     },
     {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
+      "institution": "University of Talca",
+      "area": "Engineer in Mechatronics",
       "studyType": "",
       "startDate": "",
-      "endDate": "2012",
+      "endDate": "2021",
+      "gpa": null,
+      "courses": []
+    },
+    {
+      "institution": "University of Talca",
+      "area": "B.S. in Engineering Science",
+      "studyType": "",
+      "startDate": "",
+      "endDate": "2021",
       "gpa": null,
       "courses": []
     }
@@ -66,32 +80,109 @@
   "references": [],
   "publications": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "https://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
+      "name": "Analysis of pole location control, LQR control and LMI control applied to a magnetic levitation with uncertain in parameter",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702886",
+      "summary": ""
     },
     {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "https://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
+      "name": "Control strategies of photovoltaic systems",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702993",
+      "summary": ""
     },
     {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
+      "name": "Development of solar energy in Chile and the world",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702985",
+      "summary": "Chile is undoubtedly a country with potential when it comes to solar energy, but to understand this potential it is necessary to review the worldwide situation. This paper presents an analysis of the global situation and..."
     },
     {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
+      "name": "General view of solar energy",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702964",
+      "summary": ""
+    },
+    {
+      "name": "Model and control of mushrooms greenhouse on household level: an empirical approach",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9703028",
+      "summary": ""
+    },
+    {
+      "name": "Solar energy in the agrifood industry",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702972",
+      "summary": ""
+    },
+    {
+      "name": "Technologies and MPPT algorithms for solar energy applications",
+      "publisher": "2021 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2021-12-01",
+      "website": "https://doi.org/10.1109/CHILECON54041.2021.9702987",
+      "summary": ""
+    },
+    {
+      "name": "Autonomous Vehicle Platoon Packet Based Control Problem Under Denial-of-Service Attacks",
+      "publisher": "CONTROLO 2022",
+      "releaseDate": "2022-01-01",
+      "website": "https://doi.org/10.1007/978-3-031-10047-5_42",
+      "summary": ""
+    },
+    {
+      "name": "Gain-Scheduled Control Design Applied to Classical dc\u2013dc Converters in Photovoltaic Systems and Constant Power Loads",
+      "publisher": "Mathematics",
+      "releaseDate": "2022-09-01",
+      "website": "https://doi.org/10.3390/math10193467",
+      "summary": ""
+    },
+    {
+      "name": "Alternative controller synthesize methods with H\u221e performance for an uncertain system based on metaheuristic optimization",
+      "publisher": "Unpublished manuscript / Under Review",
+      "releaseDate": "2023-01-01",
+      "website": "",
+      "summary": ""
+    },
+    {
+      "name": "H\u221e gain-scheduled dynamic output feedback control with transient performance applied to electrical microgrid",
+      "publisher": "Journal of the Franklin Institute",
+      "releaseDate": "2024-01-01",
+      "website": "https://doi.org/10.1016/j.jfranklin.2024.106704",
+      "summary": ""
+    },
+    {
+      "name": "A New Convex Approach for Grid-Supporting Inverter Control Based on DLMIs",
+      "publisher": "IEEE Transactions on Industrial Informatics",
+      "releaseDate": "2025-12-01",
+      "website": "https://doi.org/10.1109/TII.2025.3598523",
+      "summary": ""
+    },
+    {
+      "name": "Reference tracking in sampled-data systems: a DLMI-based purely-discrete PID framework",
+      "publisher": "2025 IEEE CHILEAN Conference on Electrical, Electronics Engineering, Information and Communication Technologies (CHILECON)",
+      "releaseDate": "2025-10-01",
+      "website": "https://doi.org/10.1109/CHILECON66915.2025.11476329",
+      "summary": ""
+    },
+    {
+      "name": "Constant reference tracking control for uncertain linear sampled-data systems",
+      "publisher": "Nonlinear Analysis: Hybrid Systems",
+      "releaseDate": "2026-02-01",
+      "website": "https://doi.org/10.1016/j.nahs.2025.101651",
+      "summary": "This paper addresses the problem of constant reference tracking control for uncertain linear sampled-data systems. The main contribution of this paper is the development of a novel control strategy that ensures the track..."
+    },
+    {
+      "name": "H\u2082 gain-scheduling dynamic output-feedback with D-stability applied to electronic systems",
+      "publisher": "Control Engineering Practice",
+      "releaseDate": "2026-03-01",
+      "website": "https://doi.org/10.1016/j.conengprac.2026.106881",
+      "summary": "This paper establishes novel synthesis conditions in terms of linear matrix inequalities (LMIs) for the design of a full-order dynamic output-feedback (DOF) controller for continuous-time Linear Parameter-Varying (LPV) s..."
     }
   ],
   "presentations": [
@@ -126,17 +217,17 @@
   ],
   "teaching": [
     {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
+      "course": "Catholic University of Maule",
+      "institution": "Catholic University of Maule, Faculty of Engineering",
+      "date": "2022-03-01",
+      "role": "Undergraduate courses (Lecturer)",
       "description": ""
     },
     {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
+      "course": "University of Talca",
+      "institution": "University of Talca, Faculty of Engineering",
+      "date": "2026-03-01",
+      "role": "Doctoral courses (Teaching Assistant)",
       "description": ""
     }
   ],

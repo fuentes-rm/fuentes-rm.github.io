@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "CV"
+title: "Curriculum Vitae"
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,56 +9,56 @@ redirect_from:
 
 {% include base_path %}
 
+<div style="text-align: right; margin-bottom: 2em;">
+  <a href="{{ base_path }}/cv-export/" target="_blank" class="btn btn--primary btn--large"><i class="fas fa-file-pdf"></i> Download CV (PDF)</a>
+</div>
+
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+{% include education.md %}
 
-Work experience
+Work Experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+{% include work_experience.md %}
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+Teaching Experience
+======
+{% include teaching_cv.md %}
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+Thesis Supervision
+======
+{% include students.md %}
   
-Skills
+Research Interests
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+{% include skills.md %}
 
 Publications
 ======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+{% if site.publication_category %}
+{% for category in site.publication_category %}
+{% assign cat_pubs = site.publications | where: "category", category[0] %}
+{% if cat_pubs.size > 0 %}
+<h3 style="margin-top: 1em; margin-bottom: 0.5em;">{{ category[1].title }}</h3>
+<ol reversed start="{{ cat_pubs.size }}" style="margin-top: 0;">
+{% for post in cat_pubs reversed %}
+{% include archive-single-cv.html %}
+{% endfor %}
+</ol>
+{% endif %}
+{% endfor %}
+{% else %}
+<ol reversed start="{{ site.publications.size }}">
+{% for post in site.publications reversed %}
+{% include archive-single-cv.html %}
+{% endfor %}
+</ol>
+{% endif %}
   
-Talks
+Collaborators
 ======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
+{% include collaborators.md %}
+
+Personal References
 ======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+{% include references.md %}

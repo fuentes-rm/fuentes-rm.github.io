@@ -47,30 +47,30 @@ layout: default
       <section class="page__content" itemprop="text">
         {{ content }}
 
-        {% if page.citation and page.paperurl and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.citation and page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.paperurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">Download Paper</a></p>
-        {% elsif page.citation and page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.slidesurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.slidesurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.paperurl and page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.paperurl }}">Download Paper</a> | <a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation and page.bibtexurl %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
-        {% elsif page.citation %}
-          <p style="font-size: smaller">Recommended citation: {{ page.citation }}</p>
-        {% elsif page.slidesurl %}
-          <p style="font-size: smaller"><a href="{{ page.slidesurl }}">Download Slides</a></p>
-        {% elsif page.bibtexurl %}
-          <p style="font-size: smaller"><a href="{{ page.bibtexurl }}">Download Bibtex</a></p>
+        {% assign single_links = "" | split: "" %}
+        {% if page.paperurl and page.paperurl != "#" %}
+          {% capture s_link %}<a href="{{ page.paperurl }}" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> DOI / Publisher</a>{% endcapture %}
+          {% assign single_links = single_links | push: s_link %}
+        {% endif %}
+        {% if page.pdfurl %}
+          {% capture s_link %}<a href="{{ base_path }}{{ page.pdfurl }}" target="_blank" rel="noopener"><i class="fas fa-file-pdf" aria-hidden="true"></i> Download PDF</a>{% endcapture %}
+          {% assign single_links = single_links | push: s_link %}
+        {% endif %}
+        {% if page.slidesurl %}
+          {% capture s_link %}<a href="{{ page.slidesurl }}">Download Slides</a>{% endcapture %}
+          {% assign single_links = single_links | push: s_link %}
+        {% endif %}
+        {% if page.bibtexurl %}
+          {% capture s_link %}<a href="{{ page.bibtexurl }}">Download Bibtex</a>{% endcapture %}
+          {% assign single_links = single_links | push: s_link %}
+        {% endif %}
+
+        {% if page.citation %}
+          <p style="font-size: smaller">Recommended citation: {{ page.citation }}
+            {% if single_links.size > 0 %}<br />{{ single_links | join: ' &nbsp;|&nbsp; ' }}{% endif %}
+          </p>
+        {% elsif single_links.size > 0 %}
+          <p style="font-size: smaller">{{ single_links | join: ' &nbsp;|&nbsp; ' }}</p>
         {% endif %}
 
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}

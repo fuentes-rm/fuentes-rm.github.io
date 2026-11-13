@@ -28,6 +28,17 @@ def parse_markdown_cv(md_file):
     # Remove YAML front matter
     content = re.sub(r'^---.*?---\s*', '', content, flags=re.DOTALL)
     
+    # Expand {% include filename %} tags from _includes/
+    repo_root = Path(md_file).parent.parent
+    includes_dir = repo_root / '_includes'
+    def replace_include(match):
+        inc_name = match.group(1).strip()
+        inc_path = includes_dir / inc_name
+        if inc_path.is_file():
+            return inc_path.read_text(encoding='utf-8')
+        return ''
+    content = re.sub(r'\{%\s*include\s+([^\s%]+)\s*%\}', replace_include, content)
+    
     # Extract sections
     sections = {}
     current_section = None
