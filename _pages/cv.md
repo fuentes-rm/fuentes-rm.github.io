@@ -17,6 +17,10 @@ Education
 ======
 {% include education.md %}
 
+Visiting Research Stays
+======
+{% include research_stays.md %}
+
 Work Experience
 ======
 {% include work_experience.md %}

@@ -54,6 +54,14 @@ title: "Curriculum Vitae - Roberto M. Fuentes"
         {{ edu_content | markdownify }}
     </div>
 
+    <!-- Visiting Research Stays -->
+    <div class="cv-section">
+        <h2 class="cv-section-title">Visiting Research Stays</h2>
+        <hr class="cv-section-hr">
+        {% capture stays_content %}{% include research_stays.md %}{% endcapture %}
+        {{ stays_content | markdownify }}
+    </div>
+
     <!-- Work Experience -->
     <div class="cv-section">
         <h2 class="cv-section-title">Work Experience</h2>

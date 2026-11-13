@@ -36,7 +36,7 @@
     {% endif %}
     {% if post.venue %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ post.citation }}
+      {{ post.citation | replace: "<strong>Fuentes, Roberto M.</strong>", "<strong style='text-decoration: underline; text-underline-offset: 2px;'>Fuentes, Roberto M.</strong>" }}
       {% if post.paperurl and post.paperurl != "#" %}
       &nbsp;<a href="{{ post.paperurl }}" target="_blank" rel="noopener">[DOI]</a>
       {% endif %}
