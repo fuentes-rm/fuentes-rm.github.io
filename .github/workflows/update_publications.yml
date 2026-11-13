@@ -39,7 +39,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install pyyaml bibtexparser
+          pip install pyyaml "bibtexparser<2"
 
       - name: Sync ORCID and regenerate publication files
         run: |

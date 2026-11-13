@@ -59,17 +59,69 @@ def format_authors(author_field):
 
 
 def parse_bibtex_fallback(bib_text):
-    """Lightweight BibTeX parser fallback in case bibtexparser is not installed."""
+    """Brace-balanced BibTeX parser that handles both multi-line and single-line BibTeX entries."""
     entries = []
-    pattern = re.compile(r'@(\w+)\s*\{\s*([^,]+)\s*,(.*?)\n\}', re.DOTALL)
-    field_pattern = re.compile(r'(\w+)\s*=\s*(?:\{((?:[^{}]|\{[^{}]*\})*)\}|(\w+))', re.DOTALL)
-    for match in pattern.finditer(bib_text):
-        entry_type, entry_id, body = match.groups()
-        entry = {'ENTRYTYPE': entry_type.strip(), 'ID': entry_id.strip()}
-        for fmatch in field_pattern.finditer(body):
-            key = fmatch.group(1).lower().strip()
-            val = fmatch.group(2) if fmatch.group(2) is not None else fmatch.group(3)
-            entry[key] = val.strip()
+    pos = 0
+    n = len(bib_text)
+    header_re = re.compile(r'@(\w+)\s*\{\s*([^,\s]+)\s*,', re.DOTALL)
+    field_re = re.compile(r'(\w+)\s*=\s*', re.DOTALL)
+
+    while pos < n:
+        m = header_re.search(bib_text, pos)
+        if not m:
+            break
+        entry_type, entry_id = m.group(1).strip(), m.group(2).strip()
+        # Find matching closing brace for the @entry{ ... }
+        idx = m.end()
+        depth = 1
+        while idx < n and depth > 0:
+            if bib_text[idx] == '{':
+                depth += 1
+            elif bib_text[idx] == '}':
+                depth -= 1
+            idx += 1
+        body = bib_text[m.end():idx - 1]
+        pos = idx
+
+        entry = {'ENTRYTYPE': entry_type, 'ID': entry_id}
+        fpos = 0
+        bn = len(body)
+        while fpos < bn:
+            fm = field_re.search(body, fpos)
+            if not fm:
+                break
+            key = fm.group(1).lower().strip()
+            vstart = fm.end()
+            while vstart < bn and body[vstart].isspace():
+                vstart += 1
+            if vstart >= bn:
+                break
+            if body[vstart] == '{':
+                vdepth = 1
+                vidx = vstart + 1
+                while vidx < bn and vdepth > 0:
+                    if body[vidx] == '{':
+                        vdepth += 1
+                    elif body[vidx] == '}':
+                        vdepth -= 1
+                    vidx += 1
+                val = body[vstart + 1:vidx - 1].strip()
+                fpos = vidx
+            elif body[vstart] == '"':
+                vidx = vstart + 1
+                while vidx < bn and body[vidx] != '"':
+                    if body[vidx] == '\\':
+                        vidx += 1
+                    vidx += 1
+                val = body[vstart + 1:vidx].strip()
+                fpos = vidx + 1
+            else:
+                vidx = vstart
+                while vidx < bn and body[vidx] not in ',\n\r}':
+                    vidx += 1
+                val = body[vstart:vidx].strip()
+                fpos = vidx
+            entry[key] = val
         entries.append(entry)
     return entries
 
@@ -77,12 +129,14 @@ def parse_bibtex_fallback(bib_text):
 def load_bib_entries(bib_file_path):
     try:
         import bibtexparser
-        with open(bib_file_path, encoding='utf-8') as bibtex_file:
-            bib_database = bibtexparser.load(bibtex_file)
-            return bib_database.entries
-    except ImportError:
-        with open(bib_file_path, encoding='utf-8') as bibtex_file:
-            return parse_bibtex_fallback(bibtex_file.read())
+        if hasattr(bibtexparser, 'load'):
+            with open(bib_file_path, encoding='utf-8') as bibtex_file:
+                bib_database = bibtexparser.load(bibtex_file)
+                return bib_database.entries
+    except (ImportError, AttributeError, Exception):
+        pass
+    with open(bib_file_path, encoding='utf-8') as bibtex_file:
+        return parse_bibtex_fallback(bibtex_file.read())
 
 
 def normalize_doi_url(doi_raw, url_raw):
