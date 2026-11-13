@@ -5,20 +5,63 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-<div class="wordwrap" style="margin-bottom: 1em;">You can also find my articles on <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener">my Google Scholar profile</a>, <a href="{{ site.author.orcid }}" target="_blank" rel="noopener">ORCID</a>, and <a href="{{ site.author.scopus }}" target="_blank" rel="noopener">Scopus</a>.</div>
-{% endif %}
-
 {% include base_path %}
 
+{% assign total_pubs = site.publications | size %}
+{% assign journal_pubs = site.publications | where: "category", "journals" | size %}
+{% assign conf_pubs = site.publications | where: "category", "conferences" | size %}
+{% assign first_author_count = 0 %}
+{% for pub in site.publications %}
+  {% if pub.authors and pub.authors.first contains "Fuentes" %}
+    {% assign first_author_count = first_author_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
 <style>
+    .pub-summary-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+        gap: 0.75em;
+        margin: 0.5em 0 1em 0;
+    }
+
+    .pub-stat-card {
+        padding: 0.65em 0.85em;
+        border: 1px solid var(--global-border-color, #e0e0e0);
+        border-radius: 8px;
+        background: var(--global-toc-bg-color, rgba(0, 0, 0, 0.02));
+        text-align: center;
+    }
+
+    .pub-stat-num {
+        display: block;
+        font-size: 1.45em;
+        font-weight: 700;
+        color: var(--global-link-color, #2b6cb0);
+        line-height: 1.15;
+    }
+
+    .pub-stat-label {
+        font-size: 0.76em;
+        opacity: 0.85;
+    }
+
+    .pub-profiles-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+        align-items: center;
+        margin-bottom: 1em;
+        font-size: 0.88em;
+    }
+
     .pub-controls {
         display: flex;
         flex-wrap: wrap;
         gap: 0.6em;
         align-items: center;
         justify-content: space-between;
-        margin: 1em 0 1.5em 0;
+        margin: 0.75em 0 1.5em 0;
         padding: 0.75em 1em;
         border: 1px solid var(--global-border-color, #e0e0e0);
         border-radius: 8px;
@@ -134,6 +177,41 @@ author_profile: true
     }
 </style>
 
+<div class="pub-summary-bar" aria-label="Publication summary statistics">
+    <div class="pub-stat-card">
+        <span class="pub-stat-num">{{ total_pubs }}</span>
+        <span class="pub-stat-label">Total Publications</span>
+    </div>
+    <div class="pub-stat-card">
+        <span class="pub-stat-num">{{ journal_pubs }}</span>
+        <span class="pub-stat-label">Peer-Reviewed Journals</span>
+    </div>
+    <div class="pub-stat-card">
+        <span class="pub-stat-num">{{ conf_pubs }}</span>
+        <span class="pub-stat-label">Conference Papers</span>
+    </div>
+    <div class="pub-stat-card">
+        <span class="pub-stat-num">{{ first_author_count }}</span>
+        <span class="pub-stat-label">First-Author Papers</span>
+    </div>
+</div>
+
+<div class="pub-profiles-row">
+    <span style="opacity: 0.85; margin-right: 0.2em;">External profiles:</span>
+    {% if site.author.googlescholar %}
+    <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener" class="pub-btn"><i class="ai ai-google-scholar" aria-hidden="true"></i> Google Scholar</a>
+    {% endif %}
+    {% if site.author.orcid %}
+    <a href="{{ site.author.orcid }}" target="_blank" rel="noopener" class="pub-btn"><i class="ai ai-orcid" aria-hidden="true"></i> ORCID</a>
+    {% endif %}
+    {% if site.author.scopus %}
+    <a href="{{ site.author.scopus }}" target="_blank" rel="noopener" class="pub-btn"><i class="ai ai-scopus" aria-hidden="true"></i> Scopus</a>
+    {% endif %}
+    {% if site.author.researchgate %}
+    <a href="{{ site.author.researchgate }}" target="_blank" rel="noopener" class="pub-btn"><i class="fab fa-researchgate" aria-hidden="true"></i> ResearchGate</a>
+    {% endif %}
+</div>
+
 <div class="pub-controls">
     <div class="pub-filter-group" role="group" aria-label="Filter publications by research topic">
         <button type="button" class="pub-filter-pill active" data-filter="all" onclick="filterPublications('all', this)">All</button>
@@ -223,4 +301,16 @@ author_profile: true
             block.style.display = visibleItems.length > 0 ? '' : 'none';
         });
     }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var params = new URLSearchParams(window.location.search);
+        var q = params.get('q');
+        if (q) {
+            var searchInput = document.getElementById('pub-search');
+            if (searchInput) {
+                searchInput.value = q;
+                applyPubFilters();
+            }
+        }
+    });
 </script>

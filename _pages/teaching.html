@@ -1,12 +1,228 @@
 ---
 layout: archive
-title: "Teaching"
+title: "Teaching Experience"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+<style>
+  .teaching-intro {
+    margin-bottom: 1.4em;
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+  .inst-block {
+    margin-bottom: 2.2em;
+  }
+  .inst-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5em;
+    border-bottom: 2px solid var(--global-border-color, #e0e0e0);
+    padding-bottom: 0.45em;
+    margin-bottom: 1em;
+  }
+  .inst-header h2 {
+    margin: 0;
+    font-size: 1.25em;
+  }
+  .inst-meta {
+    font-size: 0.86em;
+    opacity: 0.85;
+    font-weight: 600;
+  }
+  .course-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  .course-card {
+    padding: 1.05em 1.25em;
+    border: 1px solid var(--global-border-color, #e0e0e0);
+    border-left: 4px solid var(--global-link-color, #2b6cb0);
+    border-radius: 6px;
+    background: var(--global-toc-bg-color, rgba(0, 0, 0, 0.02));
+  }
+  .course-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.45em;
+  }
+  .course-title {
+    margin: 0;
+    font-size: 1.05em;
+    font-weight: 700;
+  }
+  .course-badge {
+    display: inline-block;
+    font-size: 0.75em;
+    font-weight: 600;
+    padding: 0.15em 0.6em;
+    border-radius: 999px;
+    background: rgba(43, 108, 176, 0.12);
+    color: var(--global-link-color, #2b6cb0);
+  }
+  .course-desc {
+    margin: 0.4em 0 0.7em 0;
+    font-size: 0.88em;
+    line-height: 1.5;
+  }
+  .course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35em;
+  }
+  .course-tag {
+    font-size: 0.74em;
+    padding: 0.12em 0.5em;
+    border-radius: 4px;
+    border: 1px solid var(--global-border-color, #ccc);
+    background: var(--global-bg-color, #fff);
+    opacity: 0.9;
+  }
+</style>
+
+<p class="teaching-intro">
+  My teaching experience spans both <strong>graduate-level doctoral courses</strong> in robust and LMI-based control at the <strong>University of Talca</strong> and <strong>undergraduate engineering lectureships</strong> in control systems, linear dynamical systems, electromagnetism, and industrial automation at the <strong>Catholic University of Maule</strong>.
+</p>
+
+<!-- University of Talca -->
+<div class="inst-block">
+  <div class="inst-header">
+    <h2><a href="{{ base_path }}/teaching/University-of-Talca" style="text-decoration: none;">University of Talca — Faculty of Engineering</a></h2>
+    <span class="inst-meta"><i class="fas fa-location-dot" aria-hidden="true"></i> Curicó, Chile &bull; Doctoral Program (Teaching Assistant, 2026)</span>
+  </div>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Control Robusto de Sistemas Inciertos <span style="font-weight: normal; opacity: 0.85;">(Robust Control of Uncertain Systems)</span></h3>
+        <span class="course-badge">Doctoral Course &bull; Teaching Assistant</span>
+      </div>
+      <p class="course-desc">
+        Modeling, analysis, and synthesis of robust controllers and filters for uncertain continuous-time, discrete-time, and impulsive hybrid systems. Covers polytopic and norm-bounded uncertainties, LTV/LPV gain-scheduled dynamic controllers, parameter-dependent Lyapunov functions, invariant sets, stochastic stability, and robust model predictive control (RMPC).
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Uncertain &amp; Hybrid Systems</span>
+        <span class="course-tag">LTV / LPV Gain-Scheduling</span>
+        <span class="course-tag">Parameter-Dependent Lyapunov</span>
+        <span class="course-tag">MATLAB &amp; YALMIP</span>
+        <span class="course-tag">SeDuMi / MOSEK</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Diseño de Sistemas de Control por Medio de Desigualdades Matriciales Lineales <span style="font-weight: normal; opacity: 0.85;">(Control Design via LMIs)</span></h3>
+        <span class="course-badge">Doctoral Course &bull; Teaching Assistant</span>
+      </div>
+      <p class="course-desc">
+        Advanced formulation of stability and performance synthesis problems via Linear Matrix Inequalities (LMIs) and semidefinite programming. Covers Schur complement, Finsler's lemma, H₂ and H∞ state and dynamic output-feedback synthesis, polytopic/norm-bounded uncertainty robustness, and numerical conditioning using MATLAB and YALMIP.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Linear Matrix Inequalities (LMIs)</span>
+        <span class="course-tag">Semidefinite Programming</span>
+        <span class="course-tag">H₂ &amp; H∞ Synthesis</span>
+        <span class="course-tag">Dynamic Output Feedback</span>
+        <span class="course-tag">MATLAB &amp; YALMIP</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Catholic University of Maule -->
+<div class="inst-block">
+  <div class="inst-header">
+    <h2><a href="{{ base_path }}/teaching/Catholic-University-of-Maule" style="text-decoration: none;">Catholic University of Maule (UCM) — Faculty of Engineering</a></h2>
+    <span class="inst-meta"><i class="fas fa-location-dot" aria-hidden="true"></i> Talca, Chile &bull; Undergraduate Courses (Lecturer in Charge, 2022–2025)</span>
+  </div>
+
+  <div class="course-grid">
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Sistemas de Control II <span style="font-weight: normal; opacity: 0.85;">(Computer-Based &amp; Discrete-Time Control Systems)</span></h3>
+        <span class="course-badge">Undergraduate &bull; Lecturer in Charge</span>
+      </div>
+      <p class="course-desc">
+        Sampled-data control systems, signal reconstruction, A/D and D/A conversion, Z-plane stability analysis, discrete state-space representations, pole-placement regulation and reference tracking, emulation of continuous controllers, and digital PID implementation.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Sampled-Data Control</span>
+        <span class="course-tag">Z-Transform</span>
+        <span class="course-tag">Pole Placement</span>
+        <span class="course-tag">Digital PID</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Sistemas de Control I <span style="font-weight: normal; opacity: 0.85;">(Automatic Control Systems I)</span></h3>
+        <span class="course-badge">Undergraduate &bull; Lecturer in Charge</span>
+      </div>
+      <p class="course-desc">
+        Foundations of SISO feedback loops, classical PID design, frequency-domain limitations, internal model principle, feedforward and cascade control architectures, controller parameterization, and continuous-time state-space control design.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Classical &amp; PID Control</span>
+        <span class="course-tag">Internal Model Principle</span>
+        <span class="course-tag">Cascade &amp; Feedforward</span>
+        <span class="course-tag">State-Space Design</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Sistemas Dinámicos Lineales <span style="font-weight: normal; opacity: 0.85;">(Linear Dynamical Systems)</span></h3>
+        <span class="course-badge">Undergraduate &bull; Lecturer in Charge</span>
+      </div>
+      <p class="course-desc">
+        Mathematical analysis of continuous and discrete-time linear systems using Fourier, Laplace, and Z transforms. Frequency response via Bode and Nyquist/Polar plots, linearization of nonlinear dynamics, and structural properties of stability, controllability, and observability.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Laplace &amp; Z Transforms</span>
+        <span class="course-tag">Bode &amp; Nyquist</span>
+        <span class="course-tag">Stability &amp; Controllability</span>
+        <span class="course-tag">Observability</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Electrónica Industrial y Automatización <span style="font-weight: normal; opacity: 0.85;">(Industrial Electronics &amp; Automation)</span></h3>
+        <span class="course-badge">Undergraduate &bull; Lecturer in Charge</span>
+      </div>
+      <p class="course-desc">
+        Semiconductor power devices (diodes, transistors, thyristors), least-squares parameter identification, microcontroller/Arduino integration, Programmable Logic Controllers (PLCs) architecture and Ladder programming, industrial sensors/actuators, and industrial robotics kinematics.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Power Semiconductors</span>
+        <span class="course-tag">PLCs &amp; Ladder Logic</span>
+        <span class="course-tag">System Identification</span>
+        <span class="course-tag">Robotics Kinematics</span>
+      </div>
+    </div>
+
+    <div class="course-card">
+      <div class="course-top">
+        <h3 class="course-title">Electromagnetismo <span style="font-weight: normal; opacity: 0.85;">(Electromagnetism)</span></h3>
+        <span class="course-badge">Undergraduate &bull; Lecturer in Charge</span>
+      </div>
+      <p class="course-desc">
+        Electrostatics and magnetostatics (Coulomb, Gauss, Ampère, Biot-Savart, and Faraday laws), capacitance and inductance, RL/RLC transient and AC steady-state phasor analysis, transformers, and electromechanical energy conversion in electrical machines.
+      </p>
+      <div class="course-tags">
+        <span class="course-tag">Maxwell &amp; Faraday Laws</span>
+        <span class="course-tag">RLC &amp; Phasor Analysis</span>
+        <span class="course-tag">Transformers &amp; Electrical Machines</span>
+      </div>
+    </div>
+  </div>
+</div>
+
