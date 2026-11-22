@@ -1,0 +1,8 @@
+{% for post in site.pages %}
+  {% assign url_suffix_8 = post.url | slice: -8, 8 %}
+  {% assign url_suffix_5 = post.url | slice: -5, 5 %}
+  {% assign url_suffix_4 = post.url | slice: -4, 4 %}
+  {% unless url_suffix_8 == '.css.map' or url_suffix_4 == '.css' or url_suffix_5 == '.json' or url_suffix_4 == '.xml' or url_suffix_4 == '.txt' %}
+    {% include archive-single.html %}
+  {% endunless %}
+{% endfor %}
